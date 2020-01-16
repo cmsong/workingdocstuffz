@@ -1,0 +1,25 @@
+.allTags{
+    display: inline;
+    padding: 3px;
+}
+
+.allTags li{
+    display: inline-block;
+    border: 1px solid black;
+    padding: 3px;
+    border-radius: 20%;
+    background-color: aqua;
+}
+
+.addedTags{
+    display: inline;
+    padding: 3px;
+}
+
+.addedTags li{
+    display: inline-block;
+    border: 1px solid black;
+    padding: 3px;
+    border-radius: 20%;
+    background-color: aqua;
+}

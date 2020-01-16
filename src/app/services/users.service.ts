@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UsersServiceService {
-
+  thing: string;
   private headers = new HttpHeaders({'Content-Type': 'application/json'});
 
   constructor(private http: HttpClient) { }
@@ -18,5 +18,9 @@ export class UsersServiceService {
 
   registerUser(user: Users) :Observable<Users>{
     return this.http.post<Users>("http://localhost:8080/makeUsers.do", user, {headers: this.headers});
+  }
+
+  testConn() {
+    return this.http.get("http://localhost:8080/characters");
   }
 }

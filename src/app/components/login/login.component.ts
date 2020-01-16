@@ -18,6 +18,11 @@ export class LoginComponent implements OnInit {
   }
 
   verifyUser(){
+    this.userService.testConn().subscribe(
+      (response) => {
+        console.log(response);
+      }
+    );
     this.userService.loginUser(new Users(this.username,this.password)).subscribe(
       (response) => {
         console.log(response);

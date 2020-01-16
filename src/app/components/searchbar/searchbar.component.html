@@ -1,0 +1,16 @@
+<div>
+    <input type="text" [(ngModel)]="gameQuery">
+    <button (click)="searchGames()">Search</button>
+</div>
+<div>
+    <h3>Added Tags:</h3>
+    <ul class="addedTags">
+        <li *ngFor="let addedtags of addedTags" (click)="tagClickerAdded($event,addedtags)">{{addedtags}}</li>
+    </ul>
+</div>
+<div>
+    <h3>Tags:</h3>
+    <ul class="allTags">
+        <li *ngFor="let alltags of allTags" (click)="tagClicker($event,alltags)">{{alltags}}</li>
+    </ul>
+</div>
