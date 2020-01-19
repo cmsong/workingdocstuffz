@@ -1,4 +1,4 @@
-export class Users {
+export class Genre {
     ge_id: number;
     genre: string;
 

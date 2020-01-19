@@ -1,4 +1,4 @@
-export class Users {
+export class Billing {
     b_id: number;
     membership_date: string;
 

@@ -1,4 +1,4 @@
-export class Users {
+export class Games {
     g_id: number;
     title: string;
     price: number;
