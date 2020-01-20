@@ -1,0 +1,34 @@
+<div class="wholetable">
+    <h1>{{exUser.user}}'s Profile</h1>
+    <table class="table table-bordered">
+        <thead>
+        <tr class="table-primary">
+            <th scope="col">Next Billing Date:</th>
+            <th style="text-align:right;" scope="col">n/a</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">First Name:</th>
+            <td style="text-align:right;">{{exUser.fName}}</td>
+        </tr>
+        <tr>
+            <th scope="row">Last Name:</th>
+            <td style="text-align:right;">{{exUser.lName}}</td>
+        </tr>
+        <tr>
+            <th scope="row">Email: </th>
+            <td style="text-align:right;">{{exUser.email}}</td>
+        </tr>
+        <tr class="table-info">
+            <th scope="row">Premium Account: </th>
+            <td style="text-align:right;">{{premiumConvert()}}</td>
+        </tr>
+        <tr class="table-warning">
+            <th scope="row">Account type: </th>
+            <td style="text-align:right;">{{adminConvert()}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>

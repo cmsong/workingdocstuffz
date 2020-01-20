@@ -1,0 +1,15 @@
+<searchbar></searchbar>
+<app-collapsebar></app-collapsebar>
+<div class="marketview">
+    <div class="game" *ngFor="let game of arr">
+        <img [src]="game.photo" class="image"/>
+        <b><p class="title">{{game.title}}</p></b>
+        <p class="genre">{{game.genre}} | <i>Released {{game.releaseDate | date}}</i></p>
+        <p class="rating"><i>Rated </i><b>{{game.rated}}</b></p>
+        <p class="price"><b>{{game.price | currency }}</b></p>
+        <div class="submitbutton">
+        <button class="btn btn-success" (click)="addToCart(game)">Add to cart <span class="glyphicon glyphicon-send"></span></button>
+        </div>
+    </div>
+</div>
+

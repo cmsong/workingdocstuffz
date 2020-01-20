@@ -1,0 +1,17 @@
+table {
+    width: 800px;
+    height:500px;
+    margin:auto;
+    font-size:30px;
+}
+h1{
+    margin-bottom:20px;
+   font-size:35px;
+   text-align:center;
+}
+
+.wholetable{
+    text-align:center;
+    margin-top:240px;
+    padding-bottom:50px;
+}
