@@ -1,0 +1,14 @@
+version: 0.2
+phases:
+    install:
+      runtime-versions:
+        nodejs: 10
+      commands:
+      - npm install -g @angular/cli
+      - npm install --save-dev @angular-devkit/build-angular
+    build:
+      commands:
+      - ng build --prod
+    post_build:
+      commands:
+      - aws s3 cp workingdocstuffz/dist/videogamemarketplace s3://dcjgames --recursive
