@@ -9,7 +9,6 @@ import { NavbarComponent } from './partialviews/navbar/defaultnavbar/navbar.comp
 import { StusernavbarComponent } from './partialviews/navbar/stusernavbar/stusernavbar.component';
 import { CollapsebarComponent } from './partialviews/collapsebar/collapsebar.component';
 import { MarketviewComponent } from './partialviews/marketplaceview/marketview.component';
-import { MarketplacefullviewComponent } from './fullviews/marketplacefullview/marketplacefullview.component';
 import { LoginfullviewComponent } from './FullViews/loginfullview/loginfullview.component';
 import { LoginComponent } from './login/login.component';
 import { SearchbarComponent } from './partialviews/searchbar/searchbar.component';
@@ -25,7 +24,6 @@ import { Userprofileservice } from './services/userprofile.service';
     StusernavbarComponent,
     CollapsebarComponent,
     MarketviewComponent,
-    MarketplacefullviewComponent,
     LoginfullviewComponent,
     LoginComponent,
     SearchbarComponent,
