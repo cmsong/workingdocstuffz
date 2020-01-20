@@ -11,5 +11,5 @@ phases:
       - ng build --prod
     post_build:
       commands:
-      - aws s3 cp workingdocstuffz/dist/videogamemarketplace s3://dcjgames --recursive
+      - aws s3 cp dist/videogamemarketplace s3://dcjgames --recursive
 
