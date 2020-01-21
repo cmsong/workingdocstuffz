@@ -13,7 +13,7 @@ li{
 }
 
 .navbar{
-   position: fixed;
+    position:absolute;
     height:17em;
     
 }
