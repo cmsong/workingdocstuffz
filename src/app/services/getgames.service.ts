@@ -21,12 +21,12 @@ export class GetgamesService {
     return this.http.get('http://localhost:8080/games?id=' + id);
   }
 
-  getAllGames(){
-    return this.http.get('http://localhost:8080/games');
+  getAllGames():Observable<Game[]>{
+    return this.http.get<Game[]>('http://localhost:8080/games');
   }
 
-  getAllGamesByName(name:string){
-    return this.http.get('http://localhost:8080/games/search?name=' + name);
+  getAllGamesByName(name:string) :Observable<Game[]>{
+    return this.http.get<Game[]>('http://localhost:8080/games/search?name=' + name);
   }
 
   updateGames(change:Game) :Observable<Game>{

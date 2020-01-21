@@ -10,7 +10,7 @@
 
 .game{
     width:300px;
-    height:450px;
+    height:500px;
     margin-left:70px;
     background-color:rgb(255, 245, 245);
     float:left;
@@ -52,4 +52,9 @@
 .price{
     text-align:center;
     font-size:17px;
+}
+.discount{
+    text-align:center;
+    font-size:13px;
+    color: red;
 }
