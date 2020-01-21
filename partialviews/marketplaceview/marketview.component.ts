@@ -2,6 +2,7 @@ import { GameService } from './../../services/game.service';
 import { Component } from '@angular/core';
 import { Game } from 'src/app/models/Game';
 import { userprofile } from 'src/app/models/userprofile';
+import { Userprofileservice } from 'services/userprofile.service';
 
 @Component({
   selector: 'app-marketview',
@@ -9,7 +10,10 @@ import { userprofile } from 'src/app/models/userprofile';
   styleUrls: ['./marketview.component.css']
 })
 export class MarketviewComponent {
-  constructor(private gameservice :GameService) {
+  disc: number = 0;
+
+
+  constructor(private gameservice :GameService, private usersserv : Userprofileservice) {
 
    }
    arr :Game[] = [
@@ -36,6 +40,7 @@ export class MarketviewComponent {
         for(let i = 0; i<this.arr.length;i++){
           this.arr[i].price = this.arr[i].price - (this.arr[i].price * .15);
         }
+        this.disc = 1;
       }
     }
   }
