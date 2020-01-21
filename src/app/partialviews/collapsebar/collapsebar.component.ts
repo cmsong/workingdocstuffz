@@ -10,7 +10,7 @@ import { Game } from 'src/app/models/Game';
 export class CollapsebarComponent implements OnInit {
   expanded = false;
   games :Game[]=[];
-  
+  checkoutGames :Game[] = [];
   constructor(private gameservice :GameService) { 
   }
 
@@ -41,7 +41,19 @@ export class CollapsebarComponent implements OnInit {
     }
     return total;
   }
-
+  removeGame(gameId){
+    console.log(event);
+    for(let i = 0; i < this.games.length; i++){
+      if(this.games[i]["gameId"] == gameId){
+        this.games.splice(i,1);
+      }
+    }
+  }
+  checkout(){
+    for(let i = 0; i < this.games.length; i++){
+      console.log(this.games[i]);
+    }
+  }
   expand(){
     this.expanded = !this.expanded;
     if(this.expanded){

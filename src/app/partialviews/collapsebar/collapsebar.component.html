@@ -5,11 +5,17 @@
     <p class="sidebarinfo" id="sidebarinfo">Your cart is currently empty!</p>
     </div>
     <div *ngIf="!getLength()">
-            <ul *ngFor="let game of games">
-                <li class="list-group" id="gamecart">{{game["title"]}} {{game["price"] | currency}}</li>
+            <ul *ngFor="let game of games" class="gamecartfull">
+                <li class="list-group" id="gamecart"><b>{{game["title"]}} {{game["price"] | currency}}</b>
+                    <button class="btn btn-danger"(click)="removeGame(game['gameId'])">Remove</button>
+                    
+                </li>
             </ul>
+            
             <div class="list-group-item" id="checkout">
             <b>Total: {{getTotal() | currency}}</b>
+            <button class="btn btn-success" (click)="checkout()">Checkout</button>
             </div>
+            
     </div>
 </div>
