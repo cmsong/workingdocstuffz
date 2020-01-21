@@ -1,0 +1,15 @@
+<button (click)="expand()" id="cartbutton"><span class="glyphicon glyphicon-shopping-cart"> Checkout</span></button>
+<div id="sidebar" >
+    <p class="sidebartitle" id="sidebartitle">Your Cart</p>
+    <div *ngIf="getLength()">
+    <p class="sidebarinfo" id="sidebarinfo">Your cart is currently empty!</p>
+    </div>
+    <div *ngIf="!getLength()">
+            <ul *ngFor="let game of games">
+                <li class="list-group" id="gamecart">{{game["title"]}} {{game["price"] | currency}}</li>
+            </ul>
+            <div class="list-group-item" id="checkout">
+            <b>Total: {{getTotal() | currency}}</b>
+            </div>
+    </div>
+</div>
