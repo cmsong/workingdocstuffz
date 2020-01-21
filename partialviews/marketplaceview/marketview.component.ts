@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { Game } from 'src/app/models/Game';
 import { userprofile } from 'src/app/models/userprofile';
 import { Userprofileservice } from 'services/userprofile.service';
+import { GetgamesService } from 'src/app/services/getgames.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-marketview',
@@ -11,9 +13,9 @@ import { Userprofileservice } from 'services/userprofile.service';
 })
 export class MarketviewComponent {
   disc: number = 0;
+  allGames: Observable<Game[]> = this.getgames.getAllGames();
 
-
-  constructor(private gameservice :GameService, private usersserv : Userprofileservice) {
+  constructor(private gameservice :GameService, private usersserv : Userprofileservice, private getgames :GetgamesService) {
 
    }
    arr :Game[] = [
@@ -34,6 +36,9 @@ export class MarketviewComponent {
     new Game(3,"Borderlands 3",59.99,"https://www.mmoga.com/images/games/_ext/1116075/borderlands-3-super-deluxe-edition-epic-games-store-key_large.png","Action/Shooter",Date.now(),"M","Borderlands 3"),
     new Game(4,"Star Wars Battlefront II",32.00,"https://i.ebayimg.com/images/g/24cAAOSwKOZcCpy1/s-l300.jpg","Action",Date.now(),"M","killer kitties"),
   ]
+
+
+
   ngOnInit(userprof: userprofile) {
     if(userprof != null || userprof != undefined){
       if(userprof.isPremium === 1 || userprof.isAdmin === 1){
@@ -43,6 +48,13 @@ export class MarketviewComponent {
         this.disc = 1;
       }
     }
+
+    this.allGames.subscribe(
+      (response) => {
+        this.arr = response;
+        console.log(this.arr);
+      }
+    );
   }
 
   
