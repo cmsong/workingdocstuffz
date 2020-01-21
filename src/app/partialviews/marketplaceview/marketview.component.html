@@ -2,6 +2,7 @@
 <app-collapsebar></app-collapsebar>
 <div class="marketview">
     <div class="game" *ngFor="let game of arr">
+        
         <img [src]="game.image" class="image"/>
         <b><p class="title">{{game.title}}</p></b>
         <p class="genre">{{game.genre}} | <i>Released {{game.releaseDate}}</i></p>
@@ -10,6 +11,7 @@
         <p class="discount" *ngIf="disc"><b>Price reflects 15% discount</b></p>
         <div class="submitbutton">
         <button class="btn btn-success" (click)="addToCart(game)">Add to cart <span class="glyphicon glyphicon-send"></span></button>
+        <div *ngIf="isAdmin"><button class="btn btn-danger"><b>Remove game</b></button></div>
         </div>
     </div>
 </div>

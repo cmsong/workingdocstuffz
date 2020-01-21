@@ -10,7 +10,7 @@
 
 .game{
     width:300px;
-    height:500px;
+    height:525px;
     margin-left:70px;
     background-color:rgb(255, 245, 245);
     float:left;
@@ -48,6 +48,8 @@
 .btn-success{
     height:40px;
     width:200px;
+    font-size:15px;
+    margin-bottom:10px;
 }
 .price{
     text-align:center;
@@ -57,4 +59,12 @@
     text-align:center;
     font-size:13px;
     color: red;
+}
+
+.btn-danger{
+    margin-bottom:270px;
+    font-size:15px;
+    padding:5px;
+    width:200px;
+    
 }

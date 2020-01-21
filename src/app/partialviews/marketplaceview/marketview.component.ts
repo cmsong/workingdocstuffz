@@ -11,14 +11,17 @@ import { Observable } from 'rxjs';
   styleUrls: ['./marketview.component.css']
 })
 export class MarketviewComponent {
-  disc: number = 0;
+  disc: number = 1;
+  isAdmin :number = 0;
   allGames: Observable<Game[]> = this.getgames.getAllGames();
   constructor(private gameservice :GameService, private usersserv : Userprofileservice, private getgames :GetgamesService) {
    }
    arr :Game[] = [];
-    
-  ngOnInit(userprof: userprofile) {
   
+  ngOnInit(userprof: userprofile) {
+    //if(userprof.isAdmin != null || userprof.isAdmin != undefined){
+    this.isAdmin = 1;
+    //}
     this.allGames.subscribe(
       (response) => {
         
