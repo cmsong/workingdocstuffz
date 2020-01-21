@@ -23,8 +23,10 @@ export class UsersServiceService {
   }
 
   registerUser(user: Users) :Observable<Users>{
+    console.log(user);
     return this.http.post<Users>("http://localhost:8080/users", user, {headers: this.headers});
   }
+
 
   testConn() {
     return this.http.get("http://localhost:8080/characters");

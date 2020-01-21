@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.userService.getAllUsers().subscribe((response)=>{
       this.allUsers = response;
-    })
+    });
   }
   
   verifyUser(val){
