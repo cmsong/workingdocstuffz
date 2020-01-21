@@ -17,8 +17,7 @@
         <div *ngIf="password.errors.minlength">Password must be at least {{password.errors.minlength.requiredLength}} characters.</div>
     </div>
 </div>
-
     <button type="submit" class="btn btn-primary">Login</button>
-
+    <div *ngIf="!loginSuccess" class="alert alert-danger">Invalid username or password!</div>
 </form>
 

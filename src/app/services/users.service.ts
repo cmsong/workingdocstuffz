@@ -13,14 +13,17 @@ export class UsersServiceService {
 
   constructor(private http: HttpClient) { }
   persistedUser;
-
+  getAllUsers() :Observable<Users[]>{
+    return this.http.get<Users[]>("http://localhost:8080/users");
+  }
   loginUser(username:string, password:string) :Observable<Users>{
-     let user = 'username: ' + username + ', password: ' + password;
-     return this.http.post<Users>("http://localhost:8080/getUsers.do",user, { headers: this.headers });
+    console.log("DB CALLED");
+     let user = "username:" + username + ", password:" + password;
+     return this.http.get<Users>("http://localhost:8080/users/"+username+"/"+password);
   }
 
   registerUser(user: Users) :Observable<Users>{
-    return this.http.post<Users>("http://localhost:8080/makeUsers.do", user, {headers: this.headers});
+    return this.http.post<Users>("http://localhost:8080/users", user, {headers: this.headers});
   }
 
   testConn() {

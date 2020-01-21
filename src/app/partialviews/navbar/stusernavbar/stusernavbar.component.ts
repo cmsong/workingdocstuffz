@@ -1,3 +1,4 @@
+import { LoggedinService } from './../../../services/loggedin.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StusernavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private loggedinservice :LoggedinService) { }
 
   ngOnInit() {
   }
-
+  getUsername(){
+    return this.loggedinservice.getUsername();
+  }
 }
