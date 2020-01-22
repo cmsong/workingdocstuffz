@@ -4,8 +4,11 @@
     <div class="game" *ngFor="let game of arr">
         
         <img [src]="game.image" class="image"/>
-        <b><p class="title">{{game.title}}</p></b>
-        <p class="genre">{{game.genre}} | <i>Released {{game.releaseDate}}</i></p>
+        <b><p class="title">{{game.title}} </p></b>
+        <ul class="genrekeep">
+            <li class="genre" *ngFor="let genre of game['genres']"><b>{{genre.genre}}</b></li>
+        </ul>
+        <p class="genre2"><i>Released {{game.releaseDate}}</i></p>
         <p class="rating"><i>Rated </i><b>{{game.rated}}</b></p>
         <p class="price"><b>{{game.price | currency }}</b></p>
         <p class="discount" *ngIf="disc"><b>Price reflects 15% discount</b></p>

@@ -10,7 +10,7 @@
 
 .game{
     width:300px;
-    height:525px;
+    height:550px;
     margin-left:70px;
     background-color:rgb(255, 245, 245);
     float:left;
@@ -31,7 +31,7 @@
     font-size:15px;
     margin-bottom:5px;
 }
-.genre{
+.genre2{
     padding-left:15px;
     font-size:11.5px;
     margin-bottom:-1px;
@@ -67,4 +67,25 @@
     padding:5px;
     width:200px;
     
+}
+
+.genrekeep{
+    padding: 5px,3px;
+    white-space: normal;
+    text-align:left;
+}
+.genre{
+    text-align:center;
+    font-size:10px;
+    list-style-type: none;
+    font-family:monospace;
+    display: inline-block;
+    border: 1px solid black;
+    padding: 3px;
+    border-radius: 7%;
+    background-color: rgb(154, 253, 124);
+    width:50px;
+    text-align:center;
+    margin-right:5px;
+    font-style:italic;
 }

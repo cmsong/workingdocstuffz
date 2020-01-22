@@ -49,10 +49,16 @@ export class CollapsebarComponent implements OnInit {
       }
     }
   }
-  checkout(){
+  checkout(){ //When button is clicked to checkout, current games in the checkout are passed to an array, which will be passed to
+    //the DB. From there, the cart is cleared and can accept more games to be added.
     for(let i = 0; i < this.games.length; i++){
-      console.log(this.games[i]);
+      this.checkoutGames[i] = this.games[i];
     }
+    this.games = [];
+    this.gameservice.games = [];
+    console.log(this.checkoutGames);
+    this.checkoutGames=[];
+    this.expand();
   }
   expand(){
     this.expanded = !this.expanded;
