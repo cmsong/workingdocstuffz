@@ -18,7 +18,9 @@ export class LoginComponent implements OnInit {
   username: string;
   password: string;
 
-  constructor(private userService: UsersServiceService,private router :Router,private loggedinservice :LoggedinService) { }
+  constructor(private userService: UsersServiceService,private router :Router,private loggedinservice :LoggedinService) { 
+   
+  }
 
   ngOnInit() {
     this.userService.getAllUsers().subscribe((response)=>{

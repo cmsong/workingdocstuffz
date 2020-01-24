@@ -1,6 +1,8 @@
+import { LoggedinService } from './../../services/loggedin.service';
 import { GameService } from './../../services/game.service';
 import { Component, OnInit } from '@angular/core';
 import { Game } from 'src/app/models/Game';
+import { UsersServiceService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-collapsebar',
@@ -11,7 +13,7 @@ export class CollapsebarComponent implements OnInit {
   expanded = false;
   games :Game[]=[];
   checkoutGames :Game[] = [];
-  constructor(private gameservice :GameService) { 
+  constructor(private gameservice :GameService, private userservice :UsersServiceService, private loggedinservice : LoggedinService) { 
   }
 
   ngOnInit() {
@@ -49,7 +51,7 @@ export class CollapsebarComponent implements OnInit {
       }
     }
   }
-  checkout(){ //When button is clicked to checkout, current games in the checkout are passed to an array, which will be passed to
+   checkout(){ //When button is clicked to checkout, current games in the checkout are passed to an array, which will be passed to
     //the DB. From there, the cart is cleared and can accept more games to be added.
     for(let i = 0; i < this.games.length; i++){
       this.checkoutGames[i] = this.games[i];
@@ -57,6 +59,11 @@ export class CollapsebarComponent implements OnInit {
     this.games = [];
     this.gameservice.games = [];
     console.log(this.checkoutGames);
+    for(let i = 0; i < this.checkoutGames.length; i++){
+    this.userservice.updateUsersGames(this.checkoutGames[i], this.loggedinservice.getUsername());
+      console.log("Log")
+     
+     }
     this.checkoutGames=[];
     this.expand();
   }

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Users } from '../models/Users';
 import { Observable } from 'rxjs';
+import { Game } from '../models/Game';
 
 
 @Injectable({
@@ -27,7 +28,10 @@ export class UsersServiceService {
     return this.http.post<Users>("http://localhost:8080/users", user, {headers: this.headers});
   }
 
-
+  updateUsersGames(game :Game, username :String){
+    console.log("http://localhost:8080/users/games?username="+username+"&g_id="+game.gameId);
+   return this.http.get("http://localhost:8080/users/games?username="+username+"&g_id="+game.gameId);
+  }
   testConn() {
     return this.http.get("http://localhost:8080/characters");
   }

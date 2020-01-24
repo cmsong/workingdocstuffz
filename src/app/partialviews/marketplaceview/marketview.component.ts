@@ -1,3 +1,4 @@
+import { LoggedinService } from './../../services/loggedin.service';
 import { GameService } from './../../services/game.service';
 import { Component } from '@angular/core';
 import { Game } from 'src/app/models/Game';
@@ -5,20 +6,27 @@ import { userprofile } from 'src/app/models/userprofile';
 import { Userprofileservice } from '../../services/userprofile.service';
 import { GetgamesService } from 'src/app/services/getgames.service';
 import { Observable } from 'rxjs';
+import { FormGroup } from '@angular/forms';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-marketview',
   templateUrl: './marketview.component.html',
   styleUrls: ['./marketview.component.css']
 })
 export class MarketviewComponent {
+  
+  rating = 3; 
   disc: number = 1;
   isAdmin :number = 1;
   allGames: Observable<Game[]> = this.getgames.getAllGames();
-  constructor(private gameservice :GameService, private usersserv : Userprofileservice, private getgames :GetgamesService) {
+  gameForm :FormGroup;
+  constructor(private gameservice :GameService, private usersserv : Userprofileservice, private getgames :GetgamesService,
+    private loggedinservice :LoggedinService) {
    }
    arr :Game[] = [];
   
   ngOnInit(userprof: userprofile) {
+   
     this.allGames.subscribe(
       (response) => {
         this.arr = response;
@@ -33,9 +41,17 @@ export class MarketviewComponent {
     //  }
       });
   }
-  
+
   addToCart(game :Game){
    this.gameservice.addGameToCart(game);
     
   }
+  editGame(game){
+    console.log(game);
+  }
+
+  openModal(val){
+    console.log(val);
+  }
+  
 }

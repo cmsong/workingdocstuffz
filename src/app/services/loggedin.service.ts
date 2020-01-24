@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class LoggedinService {
 
-  isLoggedIn = false;
+  isLoggedIn :boolean = false;
   uname;
   setLoginStatus(status){
     this.isLoggedIn = status;
