@@ -5,7 +5,7 @@
         <img [src]="game.image" class="image"/>
         <b><p class="title">{{game.title}} </p></b>
         <ul class="genrekeep">
-            <ngb-rating class="stars" [readonly]="true" [(rate)]="rating" max="5"></ngb-rating>
+            <ngb-rating class="stars" [readonly]="true" [(rate)]="rating" max="5"></ngb-rating><br>
             <li class="genre" *ngFor="let genre of game['genres']"><b>{{genre.genre}}</b></li>
         </ul>
         <p class="genre2"><i>Released {{game.releaseDate}}</i></p>

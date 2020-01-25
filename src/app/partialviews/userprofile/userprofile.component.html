@@ -1,25 +1,25 @@
 <div class="wholetable">
-    <h1>{{exUser.user}}'s Profile</h1>
+    <h1>{{username}}'s Profile</h1>
     <table class="table table-bordered">
         <thead>
         <tr class="table-primary">
             <th scope="col">Next Billing Date:</th>
-            <th style="text-align:right;" scope="col">n/a</th>
-
+            <th style="text-align:right;" scope="col">{{billing.membership_date}}</th>
+​
         </tr>
         </thead>
         <tbody>
         <tr>
             <th scope="row">First Name:</th>
-            <td style="text-align:right;">{{exUser.fName}}</td>
+            <td style="text-align:right;">{{fname}}</td>
         </tr>
         <tr>
             <th scope="row">Last Name:</th>
-            <td style="text-align:right;">{{exUser.lName}}</td>
+            <td style="text-align:right;">{{lname}}</td>
         </tr>
         <tr>
             <th scope="row">Email: </th>
-            <td style="text-align:right;">{{exUser.email}}</td>
+            <td style="text-align:right;">{{email}}</td>
         </tr>
         <tr class="table-info">
             <th scope="row">Premium Account: </th>
@@ -31,4 +31,14 @@
         </tr>
         </tbody>
     </table>
+</div>
+<h1>Your Owned Games</h1>
+<div class="marketview">
+    <div class="game" *ngFor="let game of ownedgames">
+        
+        <img [src]="game.image" class="image"/>
+        <b><p class="title">{{game.title}} </p></b>
+        <p class="descrip">{{game.description}}</p>
+        <button class="btn btn-success">Play Now!</button>
+    </div>
 </div>

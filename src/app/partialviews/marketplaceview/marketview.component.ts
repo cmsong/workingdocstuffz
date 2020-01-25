@@ -7,7 +7,7 @@ import { Userprofileservice } from '../../services/userprofile.service';
 import { GetgamesService } from 'src/app/services/getgames.service';
 import { Observable } from 'rxjs';
 import { FormGroup } from '@angular/forms';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+
 @Component({
   selector: 'app-marketview',
   templateUrl: './marketview.component.html',
@@ -16,7 +16,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 export class MarketviewComponent {
   
   rating = 3; 
-  disc: number = 1;
+  disc: number = 0;
   isAdmin :number = 1;
   allGames: Observable<Game[]> = this.getgames.getAllGames();
   gameForm :FormGroup;
@@ -31,15 +31,18 @@ export class MarketviewComponent {
       (response) => {
         this.arr = response;
         console.log(this.arr);
-        //  if(userprof != null || userprof != undefined){
-        //    if(userprof.isPremium === 1 || userprof.isAdmin === 1){
+         if(userprof != null || userprof != undefined){
+           if(userprof.isPremium === 1 || userprof.isAdmin === 1){
           for(let i = 0; i<this.arr.length;i++){
             this.arr[i].price = this.arr[i].price - (this.arr[i].price * .15);
           }
           this.disc = 1;
-    //     }
-    //  }
+        }
+     }
       });
+  }
+  updateGames(array: Game[]){
+    this.arr = array;
   }
 
   addToCart(game :Game){

@@ -3,6 +3,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Users } from '../models/Users';
 import { Observable } from 'rxjs';
 import { Game } from '../models/Game';
+import { Fulluser } from '../models/Fulluser';
 
 
 @Injectable({
@@ -32,7 +33,11 @@ export class UsersServiceService {
     console.log("http://localhost:8080/users/games?username="+username+"&g_id="+game.gameId);
    return this.http.get("http://localhost:8080/users/games?username="+username+"&g_id="+game.gameId);
   }
-  testConn() {
-    return this.http.get("http://localhost:8080/characters");
+ 
+  getUserByUsername(username: string) :Observable<Fulluser[]>{
+    return this.http.get<Fulluser[]>('http://localhost:8080/users/search?username=' + username);
+  }
+  addGamesToUsers(change: Fulluser) :Observable<string>{
+    return this.http.put<string>('http://localhost:8080/users/', change, {headers: this.headers});
   }
 }
