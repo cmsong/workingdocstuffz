@@ -1,0 +1,43 @@
+ul,li{
+    display:inline;
+    
+}
+ul{
+    margin-left:500px;
+    margin-top:50px;
+}
+li{
+    padding-right:20px;
+    color:black;
+    font-size: 20px;
+}
+
+.navbar{
+   position: fixed;
+    height:17em;
+    
+}
+
+#homeglyph{
+    align-items: right;
+    text-align:center;
+    
+}
+.title{
+    text-align: left;
+    margin-top:50px;
+    font-size:50px;
+    font-family:monospace;
+}
+.titlediv{
+    
+    height:100%;
+    padding-bottom: 75px;
+}
+
+#chevswitch{
+    margin-top:4px;
+}
+
+
+

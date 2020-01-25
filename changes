@@ -1,0 +1,6 @@
+List of all changes from the master branch thus far:
+-Changed register component- html and ts
+-Changed users model
+-Changed Games marketplace to pull from the database
+-Changed getGamesService to create an observable list on getAllGames function
+-Changed games marketplace html/css/ts to display discount prices of 15% anytime user is admin or is premium member
