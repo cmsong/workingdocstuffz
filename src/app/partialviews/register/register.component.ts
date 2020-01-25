@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsersServiceService } from 'src/app/services/users.service';
 import { Users } from '../../models/Users';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'register',
@@ -9,7 +10,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  usersarr = [];
+  usersarr: Users[] = [];
+  allUsers: Observable<Users[]> = this.usersService.allUsers();
+  stopGap: number = 0;
   username: string;
   password: string;
   email: string;
@@ -32,12 +35,28 @@ export class RegisterComponent implements OnInit {
     this.createUser();
   }
   createUser(){
-    this.usersService.registerUser(new Users(this.username,this.password,this.email,this.fname,this.lname)).subscribe(
+    this.allUsers.subscribe(
       (response) => {
-        console.log(response);
+        this.usersarr = response;
+        for (let i = 0; i < this.usersarr.length; i++){
+          if(this.usersarr[i].username === this.username){
+            this.stopGap = 1;
+          }
+          console.log(this.usersarr[i].username);
+        }
+        if(this.stopGap === 0){
+          this.usersService.registerUser(new Users(this.username,this.password,this.email,this.fname,this.lname)).subscribe(
+            (response) => {
+              console.log(response);
+            }
+          );
+          //this.router.navigate(['/login']);
+        } else {
+          console.log('Username already taken');
+        }
       }
     );
-    this.router.navigate(['/login']);
+    
   }
   
 

@@ -31,7 +31,27 @@
     font-size:15px;
     margin-bottom:5px;
 }
+.genrekeep{
+    padding: 5px,3px;
+    cursor:pointer;
+    white-space: normal;
+}
 .genre{
+    font-size:11.5px;
+    list-style-type: none;
+    font-family:monospace;
+    display: inline-block;
+    border: 1px solid black;
+    padding: 3px;
+    border-radius: 7%;
+    background-color: rgb(154, 253, 124);
+    width:80px;
+    font-size:15px;
+    text-align:center;
+    margin-right:5px;
+    font-style:italic;
+}
+.date{
     padding-left:15px;
     font-size:11.5px;
     margin-bottom:-1px;
@@ -52,4 +72,9 @@
 .price{
     text-align:center;
     font-size:17px;
+}
+.discount{
+    text-align:center;
+    font-size:17px;
+    color: red;
 }

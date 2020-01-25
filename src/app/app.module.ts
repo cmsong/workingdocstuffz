@@ -16,6 +16,7 @@ import { RegisterComponent } from './partialviews/register/register.component';
 import { RegisterfullviewComponent } from './FullViews/registerfullview/registerfullview.component';
 import { ProfileComponent } from './partialviews/userprofile/userprofile.component';
 import { Userprofileservice } from './services/userprofile.service';
+import { PremiumbuttonComponent } from './partialviews/premiumbutton/premiumbutton.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { Userprofileservice } from './services/userprofile.service';
     RegisterComponent,
     RegisterfullviewComponent,
     ProfileComponent,
+    PremiumbuttonComponent,
     
   ],
   imports: [

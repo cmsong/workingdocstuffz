@@ -2,12 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Game } from '../models/Game';
 import { Observable } from 'rxjs';
+import { Users_Games } from '../models/Users_Games';
+import { NewGames } from '../models/newGames';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GetgamesService {
-
+  allGames: Game[] = [];
 
   private headers = new HttpHeaders({'Content-Type': 'application/json'});
 
@@ -17,16 +19,16 @@ export class GetgamesService {
     return this.http.post<Game>('http://localhost:8080/games', games, {headers: this.headers});
   }
 
-  getGamesById(id:number){
-    return this.http.get('http://localhost:8080/games?id=' + id);
+  getGamesById(id:number) :Observable<NewGames>{
+    return this.http.get<NewGames>('http://localhost:8080/games/' + id);
   }
 
-  getAllGames(){
-    return this.http.get('http://localhost:8080/games');
+  getAllGames() :Observable<Game[]>{
+    return this.http.get<Game[]>('http://localhost:8080/games');
   }
 
-  getAllGamesByName(name:string){
-    return this.http.get('http://localhost:8080/games/search?name=' + name);
+  getAllGamesByName(name:string) :Observable<Game[]>{
+    return this.http.get<Game[]>('http://localhost:8080/games/search?name=' + name);
   }
 
   updateGames(change:Game) :Observable<Game>{
@@ -35,6 +37,20 @@ export class GetgamesService {
 
   deleteGames(id:number){
     return this.http.delete('http://localhost:8080/games/' + id);
+  }
+
+  setGames(arr:Game[]){
+    this.allGames = arr;
+    console.log(this.allGames);
+  }
+
+  sendGames(){
+    return this.allGames;
+  }
+
+  updateGamesUsers(change: Users_Games) :Observable<string>{
+    console.log('here bro');
+    return this.http.put<string>('http://localhost:8080/users/games',change,{headers: this.headers});
   }
 
 }

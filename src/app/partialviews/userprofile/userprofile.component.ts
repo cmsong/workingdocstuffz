@@ -15,12 +15,12 @@ export class ProfileComponent implements OnInit {
   constructor( private profService :Userprofileservice) { }
   
   ngOnInit() { 
-    this.grabUser();
-    console.log('hello there i am profile');
+    // this.grabUser();
+    // console.log('hello there i am profile');
   }
-  grabUser() {
-    this.exUser = this.profService.getUser();
-  }
+  // grabUser() {
+  //   this.exUser = this.profService.getUser();
+  // }
   adminConvert(){
     if (this.exUser.isAdmin == 1)
       this.adminString = 'Administrative';

@@ -1,6 +1,6 @@
 import { Genre } from './Genre';
 
-export class Game{
+export class NewGames{
     gameId :number;
     title :string;
     price :number;
