@@ -18,10 +18,9 @@ export class UsersServiceService {
   getAllUsers() :Observable<Users[]>{
     return this.http.get<Users[]>("http://localhost:8080/users");
   }
-  loginUser(username:string, password:string) :Observable<Users>{
+  loginUser(user :Users) :Observable<Users>{
     console.log("DB CALLED");
-     let user = "username:" + username + ", password:" + password;
-     return this.http.get<Users>("http://localhost:8080/users/"+username+"/"+password);
+     return this.http.post<Users>("http://localhost:8080/users/login", user, {headers: this.headers});
   }
 
   registerUser(user: Users) :Observable<Users>{
@@ -38,6 +37,11 @@ export class UsersServiceService {
     return this.http.get<Fulluser[]>('http://localhost:8080/users/search?username=' + username);
   }
   addGamesToUsers(change: Fulluser) :Observable<string>{
-    return this.http.put<string>('http://localhost:8080/users/', change, {headers: this.headers});
+    return this.http.put<string>('http://localhost:8080/users', change, {headers: this.headers});
+  }
+
+  createPremiumUser(change: Fulluser){
+    change.isPremium = 1;
+    return this.http.put<Users>("http://localhost:8080/users/premium", change, {headers: this.headers});
   }
 }

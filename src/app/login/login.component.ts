@@ -22,29 +22,28 @@ export class LoginComponent implements OnInit {
    
   }
 
-  ngOnInit() {
+   ngOnInit() {
     this.userService.getAllUsers().subscribe((response)=>{
       this.allUsers = response;
     });
   }
   
   verifyUser(val){
-    
-    console.log(this.allUsers);
-    console.log(val.username);
-    for(let i = 0; i < this.allUsers.length; i++){
-      if(val.username == this.allUsers[i].username && val.password == this.allUsers[i].password){
+    let user = new Users(val.username,val.password);
+    this.userService.loginUser(user).subscribe((response)=>{
+      if(response != null){
         this.router.navigateByUrl("/home");
         this.loginSuccess = true;
         this.loggedinservice.setLoginStatus(this.loginSuccess);
         this.loggedinservice.setUsername(val.username);
         return this.loginSuccess;
-        //Need to pass the 'loginSuccess' value to the app.component.ts to decide which navbar is being displayed
       }
-    }
-    this.loginSuccess = false;
-    this.loggedinservice.setLoginStatus(this.loginSuccess);
-    return this.loginSuccess;
+      else{
+        this.loginSuccess = false;
+        this.loggedinservice.setLoginStatus(this.loginSuccess);
+        return this.loginSuccess;
+      }
+    });
   }
 
 }

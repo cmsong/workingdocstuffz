@@ -1,6 +1,8 @@
 <!--Use *ngIf to see if user is logged in or not to figure out which navbar to display-->
+
 <div *ngIf="!loggedin()">
 <app-navbar></app-navbar>
+
 </div>
 
 <div *ngIf="loggedin()">
