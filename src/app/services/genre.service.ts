@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Genre } from '../models/Genre';
 import { Observable } from 'rxjs';
 
@@ -21,8 +21,8 @@ export class GenreService {
     return this.http.get('http://localhost:8080/genre?id=' + id);
   }
 
-  getAllGenres(){
-    return this.http.get('http://localhost:8080/genre');
+  getAllGenres():Observable<Genre[]>{
+    return this.http.get<Genre[]>('http://localhost:8080/genres');
   }
 
   updateGenres(change: Genre) :Observable<Genre>{

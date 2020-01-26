@@ -2,17 +2,17 @@
     <div class="searchcrit">
         <h3>Tags:</h3>
         <ul class="allTags">
-            <li *ngFor="let alltags of allTags" (click)="tagClicker($event,alltags)">{{alltags}}</li>
+            <li *ngFor="let alltags of allTags" (click)="tagClicker($event,alltags)">{{alltags.genre}}</li>
         </ul>
     </div>
 <div class="searchcrit">
     <h3>Added Tags:</h3>
     <ul class="addedTags">
-        <li *ngFor="let addedtags of addedTags" (click)="tagClickerAdded($event,addedtags)">{{addedtags}}</li>
+        <li *ngFor="let addedtags of addedTags" (click)="tagClickerAdded($event,addedtags)">{{addedtags.genre}}</li>
     </ul>
 </div>
 <div class="searchfor">
-    <input type="text" [(ngModel)]="gameQuery">
-    <button (click)="searchGames()" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
+    <input type="text" [(ngModel)]="gameQuery"(keydown.enter)="searchGames(gameQuery)">
+    <button (click)="searchGames(gameQuery)" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
 </div>
 </div>

@@ -2,14 +2,28 @@
 <app-collapsebar></app-collapsebar>
 <div class="marketview">
     <div class="game" *ngFor="let game of arr">
-        <img [src]="game.photo" class="image"/>
-        <b><p class="title">{{game.title}}</p></b>
-        <p class="genre">{{game.genre}} | <i>Released {{game.releaseDate | date}}</i></p>
+        <img [src]="game.image" class="image"/>
+        <b><p class="title">{{game.title}} </p></b>
+        <ul class="genrekeep">
+            <ngb-rating class="stars" [readonly]="true" [(rate)]="rating" max="5"></ngb-rating><br>
+            <li class="genre" *ngFor="let genre of game['genres']"><b>{{genre.genre}}</b></li>
+        </ul>
+        <p class="genre2"><i>Released {{game.releaseDate}}</i></p>
         <p class="rating"><i>Rated </i><b>{{game.rated}}</b></p>
         <p class="price"><b>{{game.price | currency }}</b></p>
+        <p class="discount" *ngIf="disc"><b>Price reflects 15% discount</b></p>
         <div class="submitbutton">
+
         <button class="btn btn-success" (click)="addToCart(game)">Add to cart <span class="glyphicon glyphicon-send"></span></button>
+   
+        <div *ngIf="isAdmin==1"><button  type="button" class="btn btn-danger" (click)="persistgame(game)"><b>Edit game</b></button></div>
         </div>
-    </div>
+    </div>    
+  
 </div>
 
+
+
+
+  
+ 

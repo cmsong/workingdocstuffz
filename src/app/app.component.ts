@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { LoggedinService } from './services/loggedin.service';
+import { Router, UrlSegment } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'videogamemarketplace';
+
+  constructor(private loggedinservice :LoggedinService, private router :Router){
+  
+  }
+  
+  loggedin(){
+    
+    return this.loggedinservice.getLoginStatus();
+  }
+  
 }

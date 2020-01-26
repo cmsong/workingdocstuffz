@@ -7,10 +7,13 @@
     white-space: nowrap;*/
     margin-top:40px;
 }
-
+nbg-pagination{
+    text-align: center;
+}
 .game{
     width:300px;
-    height:450px;
+    height:590px;
+    overflow:hidden;
     margin-left:70px;
     background-color:rgb(255, 245, 245);
     float:left;
@@ -31,7 +34,7 @@
     font-size:15px;
     margin-bottom:5px;
 }
-.genre{
+.genre2{
     padding-left:15px;
     font-size:11.5px;
     margin-bottom:-1px;
@@ -48,8 +51,57 @@
 .btn-success{
     height:40px;
     width:200px;
+    font-size:15px;
+    margin-bottom:10px;
 }
 .price{
     text-align:center;
     font-size:17px;
+}
+.discount{
+    text-align:center;
+    font-size:13px;
+    color: red;
+}
+
+.btn-danger{
+    margin-bottom:270px;
+    font-size:15px;
+    padding:5px;
+    width:200px;
+    
+}
+
+.genrekeep{
+    padding: 5px,3px;
+    white-space: normal;
+    text-align:left;
+    margin-right:20px;
+    width:100%;
+}
+.genre{
+    text-align:center;
+    font-size:10px;
+    list-style-type: none;
+    font-family:monospace;
+    display: inline-block;
+    border: 1px solid black;
+    padding: 3px;
+    border-radius: 7%;
+    background-color: rgb(154, 253, 124);
+    width:55px;
+    text-align:center;
+    margin-right:8px;
+    font-style:italic;
+}
+
+.stars{
+   font-size:18px;
+   padding-right:5px;
+    
+}
+ng-template{
+    font-size:12px;
+    padding-right:50px !important;
+
 }

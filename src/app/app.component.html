@@ -1,5 +1,11 @@
 <!--Use *ngIf to see if user is logged in or not to figure out which navbar to display-->
+
+<div *ngIf="!loggedin()">
 <app-navbar></app-navbar>
-<!--
-<app-stusernavbar></app-stusernavbar> -->
+
+</div>
+
+<div *ngIf="loggedin()">
+<app-stusernavbar></app-stusernavbar>
+</div>
 <router-outlet></router-outlet>

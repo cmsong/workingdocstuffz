@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpHeaders, HttpClient } from '@angular/common/http/http';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Billing } from '../models/Billing';
 
@@ -17,19 +17,20 @@ export class BillingService {
   }
 
   getBillingById(id: number){
-    return this.http.get('http://localhost:8080/games/' + id);
+    return this.http.get('http://localhost:8080/billing/' + id);
   }
 
   getAllBilling(){
-    return this.http.get('http://localhost:8080/games');
+    console.log("This bitch works!");
+    return this.http.get('http://localhost:8080/billing');
   }
 
   updateBilling(change: Billing) :Observable<Billing>{
-    return this.http.put<Billing>('http://localhost:8080/games', change, {headers: this.headers});
+    return this.http.put<Billing>('http://localhost:8080/billing', change, {headers: this.headers});
   }
 
   deleteBilling(id: number){
-    return this.http.delete('http://localhost:8080/games/' + id);
+    return this.http.delete('http://localhost:8080/billing/' + id);
   }
 
 }

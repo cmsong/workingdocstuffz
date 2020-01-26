@@ -3,7 +3,7 @@
     z-index: 1;
     height:70%;
     background-color:rgba(228, 222, 222,.9);
-    position:absolute;
+    position:fixed;
     overflow-x:hidden;
     transition: .5s;
 }
@@ -11,16 +11,23 @@
     width:85px;
     height:40px;
     margin-top:300px;
+    
 }
 
 #checkout{
-    margin-top:200px;
+    margin-top:10px;
+    font-size:14px;
+    text-align:center;
 }
 #gamecart{
     font-size:15px;
     margin-bottom:10px;
     list-style: none;
-    text-align:center;
+    padding-right:50px;
+    
+}
+#gamecartfull{
+    margin-right:200px;
 }
 .cartbutton:hover{
     box-shadow: 2px 2px 20px green;
@@ -39,4 +46,8 @@
     padding-top:100px;
     font-size:15px;
     font-style: italic;
+}
+.btn-success{
+    font-size:12px;
+    margin-left:10px;
 }

@@ -1,6 +1,13 @@
+import { LoggedinService } from './../../services/loggedin.service';
 import { GameService } from './../../services/game.service';
 import { Component } from '@angular/core';
 import { Game } from 'src/app/models/Game';
+import { GetgamesService } from 'src/app/services/getgames.service';
+import { Observable } from 'rxjs';
+import { FormGroup } from '@angular/forms';
+import { UsersServiceService } from 'src/app/services/users.service';
+import { Fulluser } from 'src/app/models/Fulluser';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-marketview',
@@ -8,34 +15,51 @@ import { Game } from 'src/app/models/Game';
   styleUrls: ['./marketview.component.css']
 })
 export class MarketviewComponent {
-  constructor(private gameservice :GameService) {
-
+  
+  rating = 3; 
+  disc: number = 0;
+  isAdmin :number = 0;
+  allGames: Observable<Game[]> = this.getgames.getAllGames();
+  gameForm :FormGroup;
+  userprof :Fulluser;
+  constructor(private gameservice :GameService, private usersserv : UsersServiceService, private getgames :GetgamesService,
+    private loggedinservice :LoggedinService, private router :Router) {
    }
-   arr :Game[] = [
-    new Game(1,"Resident Evil",59.99,"https://now.estarland.com/images/products/25/51525/127159.jpg","Horror",Date.now(),"M","killer kitties"),
-    new Game(2,"Cyberpunk 2077",59.99,"http://images.pushsquare.com/44d8c567ed72a/cyberpunk-2077s-cover-featuring-male-v.large.jpg","Action/Shooter",Date.now(),"M","Cyberpunk 2077"),
-    new Game(3,"Borderlands 3",59.99,"https://www.mmoga.com/images/games/_ext/1116075/borderlands-3-super-deluxe-edition-epic-games-store-key_large.png","Action/Shooter",Date.now(),"M","Borderlands 3"),
-    new Game(4,"Star Wars Battlefront II",32.00,"https://i.ebayimg.com/images/g/24cAAOSwKOZcCpy1/s-l300.jpg","Action",Date.now(),"M","killer kitties"),
-    new Game(1,"Resident Evil",59.99,"https://now.estarland.com/images/products/25/51525/127159.jpg","Horror",Date.now(),"M","killer kitties"),
-    new Game(2,"Cyberpunk 2077",59.99,"http://images.pushsquare.com/44d8c567ed72a/cyberpunk-2077s-cover-featuring-male-v.large.jpg","Action/Shooter",Date.now(),"M","Cyberpunk 2077"),
-    new Game(3,"Borderlands 3",59.99,"https://www.mmoga.com/images/games/_ext/1116075/borderlands-3-super-deluxe-edition-epic-games-store-key_large.png","Action/Shooter",Date.now(),"M","Borderlands 3"),
-    new Game(4,"Star Wars Battlefront II",32.00,"https://i.ebayimg.com/images/g/24cAAOSwKOZcCpy1/s-l300.jpg","Action",Date.now(),"M","killer kitties"),
-    new Game(1,"Resident Evil",59.99,"https://now.estarland.com/images/products/25/51525/127159.jpg","Horror",Date.now(),"M","killer kitties"),
-    new Game(2,"Cyberpunk 2077",59.99,"http://images.pushsquare.com/44d8c567ed72a/cyberpunk-2077s-cover-featuring-male-v.large.jpg","Action/Shooter",Date.now(),"M","Cyberpunk 2077"),
-    new Game(3,"Borderlands 3",59.99,"https://www.mmoga.com/images/games/_ext/1116075/borderlands-3-super-deluxe-edition-epic-games-store-key_large.png","Action/Shooter",Date.now(),"M","Borderlands 3"),
-    new Game(4,"Star Wars Battlefront II",32.00,"https://i.ebayimg.com/images/g/24cAAOSwKOZcCpy1/s-l300.jpg","Action",Date.now(),"M","killer kitties"),
-    new Game(1,"Resident Evil",59.99,"https://now.estarland.com/images/products/25/51525/127159.jpg","Horror",Date.now(),"M","killer kitties"),
-    new Game(2,"Cyberpunk 2077",59.99,"http://images.pushsquare.com/44d8c567ed72a/cyberpunk-2077s-cover-featuring-male-v.large.jpg","Action/Shooter",Date.now(),"M","Cyberpunk 2077"),
-    new Game(3,"Borderlands 3",59.99,"https://www.mmoga.com/images/games/_ext/1116075/borderlands-3-super-deluxe-edition-epic-games-store-key_large.png","Action/Shooter",Date.now(),"M","Borderlands 3"),
-    new Game(4,"Star Wars Battlefront II",32.00,"https://i.ebayimg.com/images/g/24cAAOSwKOZcCpy1/s-l300.jpg","Action",Date.now(),"M","killer kitties"),
-  ]
+   arr :Game[] = [];
+  
   ngOnInit() {
-
- 
+    this.usersserv.getUserByUsername(this.loggedinservice.getUsername()).subscribe((response)=>{
+      this.userprof = response[0];
+      this.isAdmin = this.userprof.isAdmin;
+    })
+    this.allGames.subscribe(
+      (response) => {
+        this.arr = response;
+        console.log(this.userprof);
+         if(this.userprof != null || this.userprof != undefined){
+           if(this.userprof.isPremium == 1 || this.userprof.isAdmin == 1){
+          for(let i = 0; i<this.arr.length;i++){
+            this.arr[i].price = this.arr[i].price - (this.arr[i].price * .15);
+          }
+          this.disc = 1;
+        }
+     }
+      });
+  }
+  updateGames(array: Game[]){
+    this.arr = array;
   }
 
   addToCart(game :Game){
    this.gameservice.addGameToCart(game);
     
   }
+  
+
+  persistgame(game :Game){
+    console.log(game);
+    this.gameservice.persistgame(game);
+    this.router.navigateByUrl("/editgame");
+  }
+  
 }

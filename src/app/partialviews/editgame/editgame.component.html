@@ -1,0 +1,59 @@
+<form #form="ngForm" (ngSubmit)="sub(form.value)">
+    <h1>Edit {{g.title}}</h1>
+    <div class="form-group">
+        <h2>Title:</h2> <input type="text"  
+         placeholder="{{g.title}}"
+         ngModel name="title" 
+        #title="ngModel" 
+        class="form-control" 
+       >
+    </div>
+    <div class="form-group">
+        <h2>Price:</h2><input type="text" 
+        ngModel name="price" 
+        #price="ngModel" 
+        class="form-control" 
+        placeholder="{{g.price}}" 
+        >
+    </div>
+    <div class="form-group">
+        <h2>Description:</h2><input type="text" 
+        ngModel name="description" 
+        #description="ngModel" 
+        class="form-control" 
+        placeholder="{{g.description}}" 
+        >
+    </div>
+<div class="form-group">
+    <h2>E-M Rating:</h2><input type="text" 
+    ngModel name="rating" 
+    #rating="ngModel" 
+    class="form-control" 
+    placeholder="{{g.rated}}" 
+    >
+</div>
+<div class="form-group">
+    <h2>Release Date:</h2><input type="text" 
+    ngModel name="dateRel" 
+    #password="ngModel" 
+    class="form-control" 
+    placeholder="{{g.releaseDate}}">  
+</div>
+<div class="form-group">
+    <h2>Image URL:</h2><input type="text" 
+    ngModel name="imgurl" 
+    #imgurl="ngModel" 
+    class="form-control" 
+    placeholder="{{g.image}}" 
+    
+   >  
+</div>
+<br>
+<button class="btn btn-primary" 
+type="submit" 
+[disabled]="!form.valid">
+Submit
+</button>
+    
+​
+</form>
