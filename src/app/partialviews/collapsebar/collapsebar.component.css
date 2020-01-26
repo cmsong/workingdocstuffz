@@ -3,7 +3,7 @@
     z-index: 1;
     height:70%;
     background-color:rgba(228, 222, 222,.9);
-    position:absolute;
+    position:fixed;
     overflow-x:hidden;
     transition: .5s;
 }
@@ -11,6 +11,7 @@
     width:85px;
     height:40px;
     margin-top:300px;
+    
 }
 
 #checkout{
@@ -23,6 +24,7 @@
     margin-bottom:10px;
     list-style: none;
     padding-right:50px;
+    
 }
 #gamecartfull{
     margin-right:200px;

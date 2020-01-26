@@ -12,7 +12,7 @@
     </ul>
 </div>
 <div class="searchfor">
-    <input type="text" [(ngModel)]="gameQuery"(change)="searchGames(gameQuery)">
+    <input type="text" [(ngModel)]="gameQuery"(keydown.enter)="searchGames(gameQuery)">
     <button (click)="searchGames(gameQuery)" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
 </div>
 </div>

@@ -37,20 +37,19 @@ export class SearchbarComponent implements OnInit {
     );
   }
   searchGames(gquery){
-    let j = 0;
-    for(let i = 0; i < this.allGames.length; i++)
-  {
-    if(this.allGames[i].title.includes(gquery) || this.allGames[i].title.substring(0,1) == gquery.substring(0,1)){
-      this.singleGame[j++] = this.allGames[i];
-      this.market.updateGames(this.singleGame);
-           
-    }
-    else{
-    this.market.updateGames(this.allGamesReset);
-    }
+    this.gameserv.getAllGamesByTitle(gquery).subscribe((response)=>{
+      this.singleGame = response;
     
-  }
-  
+
+    if(gquery.trim() == "" || gquery == undefined){
+      console.log(this.allGames);
+      this.market.updateGames(this.allGames);
+      
+      this.singleGame = [];
+    } else{
+      this.market.updateGames(this.singleGame);
+      this.singleGame = [];
+    }});
   }
   tagClicker(event, item){
     this.addedTags.push(item);

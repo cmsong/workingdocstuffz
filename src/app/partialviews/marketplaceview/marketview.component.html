@@ -16,7 +16,7 @@
 
         <button class="btn btn-success" (click)="addToCart(game)">Add to cart <span class="glyphicon glyphicon-send"></span></button>
    
-        <div *ngIf="isAdmin"><button type="button" class="btn btn-danger" (click)="openModal(game)" ><b>Edit game</b></button></div>
+        <div *ngIf="isAdmin==1"><button  type="button" class="btn btn-danger" (click)="persistgame(game)"><b>Edit game</b></button></div>
         </div>
     </div>    
   

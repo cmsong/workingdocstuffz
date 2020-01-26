@@ -78,14 +78,7 @@ export class CollapsebarComponent implements OnInit {
     });
     
     }
-    // console.log(this.checkoutGames);
-    // for(let i = 0; i < this.checkoutGames.length; i++){
-    // this.ug.push(new Users_Games(this.loggedinservice.getUsername(),this.checkoutGames[i].gameId));
-    //   console.log(this.ug[i]);
-    //  }
-    //  for(let j = 0; j < this.ug.length; j++){
-    //   this.getgamesservice.updateGamesUsers(this.ug[j]).subscribe((response)=>{console.log(response)});
-    //  }
+
     this.games = [];
     this.gameservice.games = [];
     this.checkoutGames=[];
